@@ -6,9 +6,11 @@ SinocareSDK 是三诺生物传感股份有限公司的蓝牙血糖仪连接的SD
 SinocareSDK 主要是通过lib sn_care_sdk.jar方式提供给第三发。
 
 ## 1.2 手机设备的Android系统版本和蓝牙版本要求
-安稳+air版，需要SinoSDK 支持android 4.3及以上操作系统，支持蓝牙4.0，支持ble
-蓝牙WL-1血糖仪（微信版）,需要SinoSDK 支持android 4.0及以上操作系统，支持蓝牙3.0
-蓝牙WL-1血糖仪（直连版），需要SinoSDK 支持android 4.0及以上操作系统，支持蓝牙3.0
+安稳+air版，需要SinocareSDK支持android 4.3及以上操作系统，支持蓝牙4.0，支持ble
+
+蓝牙WL-1血糖仪（微信版）,需要SinocareSDK支持android 4.0及以上操作系统，支持蓝牙3.0
+
+蓝牙WL-1血糖仪（直连版），需要SinocareSDK支持android 4.0及以上操作系统，支持蓝牙3.0或许蓝牙4.0 ble
 
 # 2. 集成方法
 ## 2.1  获得AccessKey和SecretKey
@@ -50,15 +52,14 @@ ACCESS_COARSE_LOCATION (必须)    用于允许应用程序访问设备位置。
     <service
        android:name="com.sinocare.bluetoothle.SN_BluetoothLeService"
        android:enabled="true" >
-     <meta-data android:name="AccessKey" android:value="888"></meta-data>
-    <meta-data android:name="SecretKey" android:value="888"></meta-data>
+     <meta-data android:name="AccessKey" android:value="分配给贵公司的accessKey"></meta-data>
+    <meta-data android:name="SecretKey" android:value="分配给贵公司的SecretKey"></meta-data>
      </service>
 
 其中AccessKey 和 SecretKey 为SDK权限访问相关的Key
 服务为蓝牙相关的服务，包名固定为com.sinocare.bluetoothle.SN_BluetoothLeService 
 
 ## 2.6 接入场景
-SDK 接入流程如下
 
 ### 2.6.1 鉴权过程
 ![](https://github.com/sinocare/SinocareSDKDemo/blob/master/uml/1.png)
@@ -70,10 +71,10 @@ SDK 接入流程如下
 ### 2.6.3 状态返回和数据发送
 ![](https://github.com/sinocare/SinocareSDKDemo/blob/master/uml/3.png)
 
-
 # 3.接口说明
 
 ## 3.1 初始化SDK
+在app启动时，application中
     initSDK(context, ProtocolVersion.WL_1,false);//不使用4.0
     // initSDK(context, ProtocolVersion.WL_1);//双模 手机支持BLE 使用BLE方式
     context 为当前activity的上下文;
@@ -85,10 +86,10 @@ SDK 接入流程如下
     返回搜索到的蓝牙设备信息 详细请查询API doc
 
 ## 3.3 连接
-    场景：搜索到设备后，选择需要连接的设备；
-     connectBlueTooth(BluetoothDevice device, SC_BlueToothCallBack callback) 
+场景：搜索到设备后，选择需要连接的设备；
+    connectBlueTooth(BluetoothDevice device, SC_BlueToothCallBack callback) 
        连接蓝牙设备
-    注意 :连接的时候需要提供需要连接的蓝牙设备
+注意 :连接的时候需要提供需要连接的蓝牙设备
 
 ## 3.4 读当前测试数据
     readCurrentTestData(SC_CurrentDataCallBack<BloodSugarData> currentTestValue) 
@@ -107,7 +108,14 @@ SDK 接入流程如下
 
     数据返回接口 currentPackage 为当前包，totalPackages为总包，每包的数据量通过
     datas.size 获取。
-## 3.7 广播监听状态变化
+## 3.8 时间校正
+    setMCTime(Date date, SC_TimeSetCmdCallBack timeCallback)
+    设置后血糖仪的当前时间将通过timeCallback.onTimeSetCmdFeedback回调返回。
+## 3.9 设置验证码
+    modifyCode(byte code, SC_ModifyCodeSetCmdCallBack modifyCodeBack)
+    验证码的取值范围为2-40，设置后血糖仪的当前时间将通过modifyCodeBack.onModifyCodeCmdFeedback回调返回。
+    trividia和WL_WEIXIN_BLE类型的血糖仪不支持该接口。
+## 3.10广播监听状态变化
     //广播监听SDK ACTION
 	private final BroadcastReceiver mBtReceiver = new BroadcastReceiver() {
 		@Override
