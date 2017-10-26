@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/cmd_dialog"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_commad_1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="连接测试"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_commad_2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="当前结果" />
+
+        <Button
+            android:id="@+id/btn_commad_3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="历史结果" />
+
+        <Button
+            android:id="@+id/btn_commad_4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="时间设置" />
+
+        <Button
+            android:id="@+id/btn_commad_5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="获取ID"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_commad_6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="清空数据" />
+
+        <Button
+            android:id="@+id/btn_commad_7"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="校正码修改"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_commad_8"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="关机" />
+
+        <Button
+            android:id="@+id/btn_commad_9"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="TV第一条数据" />
+
+        <Button
+            android:id="@+id/btn_commad_10"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="TV最后一条数据" />
+
+        <Button
+            android:id="@+id/btn_commad_11"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="Tv所有数据" />
+
+        <Button
+            android:id="@+id/btn_commad_12"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="关机"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_commad_13"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="关机"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_commad_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="发送校正码" />
+
+            <EditText
+                android:id="@+id/et_modifyCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="请输入校正码"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
