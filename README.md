@@ -75,7 +75,8 @@ ACCESS_COARSE_LOCATION (必须)    用于允许应用程序访问设备位置。
 
 ## 3.1 初始化SDK
 如果targetSdkVersion 小于23，不需要6.0权限处理，则直接在application中
-    initSDK(context);//
+    initSDK(context);
+    
 如果是targetSdkVersion 大于等于23，需要6.0权限处理，则需要在启动页面或
 者程序主界面中获取权限后，再做初始化动作
  initSDK(context);
