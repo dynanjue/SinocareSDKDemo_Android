@@ -62,14 +62,14 @@ ACCESS_COARSE_LOCATION (必须)    用于允许应用程序访问设备位置。
 ## 2.6 接入场景
 
 ### 2.6.1 鉴权过程
-![](https://github.com/sinocare/SinocareSDKDemo/blob/master/uml/1.png)
+![](https://github.com/sinocare2017/SinocareSDKDemo_Android/blob/master/uml/1.png)
 
 ### 2.6.2 建立连接及通信
-![](https://github.com/sinocare/SinocareSDKDemo/blob/master/uml/2.png)
-![](https://github.com/sinocare/SinocareSDKDemo/blob/master/uml/22.png)
+![](https://github.com/sinocare2017/SinocareSDKDemo_Android/blob/master/uml/2.png)
+![](https://github.com/sinocare2017/SinocareSDKDemo_Android/blob/master/uml/22.png)
 
 ### 2.6.3 状态返回和数据发送
-![](https://github.com/sinocare/SinocareSDKDemo/blob/master/uml/3.png)
+![](https://github.com/sinocare2017/SinocareSDKDemo_Android/blob/master/uml/3.png)
 
 # 3.接口说明
 
