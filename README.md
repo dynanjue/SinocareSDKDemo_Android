@@ -74,11 +74,12 @@ ACCESS_COARSE_LOCATION (必须)    用于允许应用程序访问设备位置。
 # 3.接口说明
 
 ## 3.1 初始化SDK
-在app启动时，application中
-    initSDK(context, ProtocolVersion.WL_1,false);//不使用4.0
-    // initSDK(context, ProtocolVersion.WL_1);//双模 手机支持BLE 使用BLE方式
-    context 为当前activity的上下文;
-
+如果targetSdkVersion 小于23，不需要6.0权限处理，则直接在application中
+    initSDK(context);//
+如果是targetSdkVersion 大于等于23，需要6.0权限处理，则需要在启动页面或
+者程序主界面中获取权限后，再做初始化动作
+ initSDK(context);
+ 
 ## 3.2 搜索设备
     searchBlueToothDevice(SC_BlueToothSearchCallBack<BlueToothInfo> device)
          SC_BlueToothSearchCallBack<BlueToothInfo> device 为异步返回类
@@ -87,9 +88,12 @@ ACCESS_COARSE_LOCATION (必须)    用于允许应用程序访问设备位置。
 
 ## 3.3 连接
 场景：搜索到设备后，选择需要连接的设备；
-    connectBlueTooth(BluetoothDevice device, SC_BlueToothCallBack callback) 
-       连接蓝牙设备
-注意 :连接的时候需要提供需要连接的蓝牙设备
+安稳连接设备：
+    connectBlueTooth(BluetoothDevice device, SC_BlueToothCallBack callback，ProtocolVersion.WL_1) ;
+安稳+air ：
+ connectBlueTooth(BluetoothDevice device, SC_BlueToothCallBack callback，ProtocolVersion.WL_WEIXIN_BLE) ;
+ 
+ 备注:只支持同一时刻，一台手机只能连接一台血糖仪。断开后可连接其他设备
 
 ## 3.4 读当前测试数据
     readCurrentTestData(SC_CurrentDataCallBack<BloodSugarData> currentTestValue) 
@@ -159,9 +163,7 @@ ACCESS_COARSE_LOCATION (必须)    用于允许应用程序访问设备位置。
 # 5 常见问题  
      1、问题：认证不通过
         出现问题分析： AccessKey 和 SecretKey 设置不正确。或者 当前无网络；
-     2、问题: 连接不成功
-        问题分析：initSDK(context, ProtocolVersion.WL_1,false);初始化 设置协议不正确
-     3、问题: 蓝牙搜索到设备
+     2、问题: 蓝牙搜索到设备
         问题分析 ：蓝牙未打开
-     4、其他问题：
+     3、其他问题：
        请联系三诺工程师；或者私信；
