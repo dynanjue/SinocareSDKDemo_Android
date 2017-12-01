@@ -31,6 +31,7 @@ import com.sinocare.Impl.SC_ModifyCodeSetCmdCallBack;
 import com.sinocare.Impl.SC_TimeSetCmdCallBack;
 import com.sinocare.domain.BloodSugarData;
 import com.sinocare.handler.SN_MainHandler;
+import com.sinocare.protocols.ProtocolVersion;
 import com.sinocare.status.SC_DataStatusUpdate;
 import com.sinocare.status.SC_ErrorStatus;
 import com.sinocare.utils.LogUtil;
@@ -86,7 +87,7 @@ public class CommunicationActivity extends Activity{
 				// TODO Auto-generated method stub
 					LogUtil.log(TAG,"onConnectFeedBack-----------result----------" + result);
 			}
-		});
+		}, ProtocolVersion.WL_1);
 
 		Sn_MainHandler.registerReceiveBloodSugarData(new SC_CurrentDataCallBack<BloodSugarData>() {
 
